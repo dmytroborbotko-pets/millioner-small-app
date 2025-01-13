@@ -1,0 +1,17 @@
+.totalScore {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-gray-medium);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+@media (max-width: 854px) {
+  .scoreContainer {
+    text-align: center;
+  }
+}

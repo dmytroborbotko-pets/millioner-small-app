@@ -1,0 +1,148 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the capital of Japan?",
+      "options": {
+        "A": "Beijing",
+        "B": "Seoul",
+        "C": "Tokyo",
+        "D": "Bangkok"
+      },
+      "correctAnswer": "C",
+      "winningSum": 500
+    },
+    {
+      "id": 2,
+      "question": "Which programming language was created by Brendan Eich?",
+      "options": {
+        "A": "Python",
+        "B": "JavaScript",
+        "C": "Java",
+        "D": "Ruby"
+      },
+      "correctAnswer": "B",
+      "winningSum": 1000
+    },
+    {
+      "id": 3,
+      "question": "What is the largest planet in our solar system?",
+      "options": {
+        "A": "Saturn",
+        "B": "Mars",
+        "C": "Jupiter",
+        "D": "Neptune"
+      },
+      "correctAnswer": "C",
+      "winningSum": 2000
+    },
+    {
+      "id": 4,
+      "question": "Who painted the Mona Lisa?",
+      "options": {
+        "A": "Leonardo da Vinci",
+        "B": "Michelangelo",
+        "C": "Raphael",
+        "D": "Vincent van Gogh"
+      },
+      "correctAnswer": "A",
+      "winningSum": 4000
+    },
+    {
+      "id": 5,
+      "question": "What is the chemical symbol for gold?",
+      "options": {
+        "A": "Ag",
+        "B": "Fe",
+        "C": "Cu",
+        "D": "Au"
+      },
+      "correctAnswer": "D",
+      "winningSum": 8000
+    },
+    {
+      "id": 6,
+      "question": "Which company developed React.js?",
+      "options": {
+        "A": "Google",
+        "B": "Facebook",
+        "C": "Microsoft",
+        "D": "Amazon"
+      },
+      "correctAnswer": "B",
+      "winningSum": 16000
+    },
+    {
+      "id": 7,
+      "question": "What year was the first iPhone released?",
+      "options": {
+        "A": "2005",
+        "B": "2006",
+        "C": "2007",
+        "D": "2008"
+      },
+      "correctAnswer": "C",
+      "winningSum": 32000
+    },
+    {
+      "id": 8,
+      "question": "Which HTML element is used to define important text?",
+      "options": {
+        "A": "<strong>",
+        "B": "<b>",
+        "C": "<important>",
+        "D": "<em>"
+      },
+      "correctAnswer": "A",
+      "winningSum": 64000
+    },
+    {
+      "id": 9,
+      "question": "What does CSS stand for?",
+      "options": {
+        "A": "Computer Style Sheets",
+        "B": "Creative Style System",
+        "C": "Cascading Style Sheets",
+        "D": "Colorful Style Sheets"
+      },
+      "correctAnswer": "C",
+      "winningSum": 125000
+    },
+    {
+      "id": 10,
+      "question": "Which protocol is used to send emails?",
+      "options": {
+        "A": "FTP",
+        "B": "SMTP",
+        "C": "HTTP",
+        "D": "SSH"
+      },
+      "correctAnswer": "B",
+      "winningSum": 250000
+    },
+    {
+      "id": 11,
+      "question": "What is the primary purpose of TypeScript?",
+      "options": {
+        "A": "Database Management",
+        "B": "Static Typing",
+        "C": "Server Management",
+        "D": "UI Design"
+      },
+      "correctAnswer": "B",
+      "winningSum": 500000
+    },
+    {
+      "id": 12,
+      "question": "Which hook is used for side effects in React?",
+      "options": {
+        "A": "useState",
+        "B": "useContext",
+        "C": "useEffect",
+        "D": "useReducer"
+      },
+      "correctAnswer": "C",
+      "winningSum": 1000000
+    }
+  ]
+} 

@@ -1,0 +1,33 @@
+.imageWrapper {
+  position: relative;
+  width: 37.5rem; /* 600px */
+  height: 31.25rem; /* 500px */
+}
+
+@media (max-width: 1024px) {
+  .imageWrapper {
+    width: 31.25rem; /* 500px */
+    height: 26rem; /* ~416px */
+  }
+}
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    width: 25rem; /* 400px */
+    height: 20.8rem; /* ~333px */
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    width: 18.75rem; /* 300px */
+    height: 15.6rem; /* 250px */
+  }
+}
+
+@media (max-width: 375px) {
+  .imageWrapper {
+    width: 15.625rem; /* 250px */
+    height: 13rem; /* ~208px */
+  }
+} 
