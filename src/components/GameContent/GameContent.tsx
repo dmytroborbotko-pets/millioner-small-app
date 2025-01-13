@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../app/game/page.module.css";
 import Option from "../Option";
 import { Question } from "@/types";
-import { AnswerState } from "@/app/game/page";
+import { AnswerState } from "@/app/game/types";
 
 interface GameContentProps {
   question: Question;
@@ -22,10 +22,7 @@ const getOptionColors = (
         backgroundColor: "var(--color-success-bg)",
       };
     }
-    if (
-      answerState.selectedAnswers.includes(letter) &&
-      !answerState.isCorrect
-    ) {
+    if (answerState.selectedAnswers.includes(letter) && !answerState.isCorrect) {
       return {
         strokeColor: "var(--color-error)",
         backgroundColor: "var(--color-error-bg)",

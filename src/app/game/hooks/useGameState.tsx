@@ -1,6 +1,6 @@
 import { Question } from "@/types";
 import { useState } from "react";
-import { AnswerState, INITIAL_ANSWER_STATE } from "../page";
+import { AnswerState, INITIAL_ANSWER_STATE } from "../types";
 
 export const useGameState = () => {
   const [displayedQuestion, setDisplayedQuestion] = useState<Question | null>(
@@ -8,8 +8,7 @@ export const useGameState = () => {
   );
   const [isLoadingQuestion, setIsLoadingQuestion] = useState(true);
   const [hasInitialData, setHasInitialData] = useState(false);
-  const [answerState, setAnswerState] =
-    useState<AnswerState>(INITIAL_ANSWER_STATE);
+  const [answerState, setAnswerState] = useState<AnswerState>(INITIAL_ANSWER_STATE);
 
   return {
     displayedQuestion,

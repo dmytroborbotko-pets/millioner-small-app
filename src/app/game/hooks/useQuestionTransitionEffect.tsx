@@ -1,6 +1,6 @@
-import { AnswerState, INITIAL_ANSWER_STATE } from "../page";
 import { Question } from "@/types";
 import { useEffect } from "react";
+import { AnswerState, INITIAL_ANSWER_STATE } from "../types";
 
 const QUESTION_TRANSITION_DELAY = 300;
 

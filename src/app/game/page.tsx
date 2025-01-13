@@ -9,22 +9,7 @@ import { useGameState } from "./hooks/useGameState";
 import { useInitialDataEffect } from "./hooks/useInitialDataEffect";
 import { useQuestionTransitionEffect } from "./hooks/useQuestionTransitionEffect";
 import Image from "next/image";
-
-export interface AnswerState {
-  selectedAnswers: string[];
-  isCorrect: boolean;
-  showFeedback: boolean;
-  isPending: boolean;
-}
-
-export const INITIAL_ANSWER_STATE: AnswerState = {
-  selectedAnswers: [],
-  isCorrect: false,
-  showFeedback: false,
-  isPending: false,
-};
-
-const ANSWER_FEEDBACK_DELAY = 500;
+import { ANSWER_FEEDBACK_DELAY } from "./types";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
