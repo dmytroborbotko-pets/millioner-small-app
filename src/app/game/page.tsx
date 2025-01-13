@@ -148,6 +148,7 @@ const GamePage = () => {
           alt={isMenuVisible ? "Close menu" : "Open menu"}
           width={24}
           height={24}
+          priority
         />
       </button>
       <div className={styles.questionContainer}>{renderGameContent()}</div>
