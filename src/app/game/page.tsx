@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./page.module.css";
 import { useQuestions } from "@/hooks/useQuestions";
 import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
@@ -8,6 +8,7 @@ import MoneyList from "@/components/MoneyList/MoneyList";
 import { useGameState } from "./hooks/useGameState";
 import { useInitialDataEffect } from "./hooks/useInitialDataEffect";
 import { useQuestionTransitionEffect } from "./hooks/useQuestionTransitionEffect";
+import Image from "next/image";
 
 export interface AnswerState {
   selectedAnswers: string[];
@@ -29,6 +30,7 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const GamePage = () => {
   const nodeRef = useRef(null);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const {
     displayedQuestion,
@@ -107,7 +109,6 @@ const GamePage = () => {
       return;
     }
 
-    // For multiple-answer questions, check if we have the required number of answers
     const updatedAnswers = answerState.selectedAnswers.includes(selectedAnswer)
       ? answerState.selectedAnswers.filter(
           (answer) => answer !== selectedAnswer
@@ -150,10 +151,26 @@ const GamePage = () => {
     );
   };
 
+  const toggleMenu = () => {
+    setIsMenuVisible((prev) => !prev);
+  };
+
   return (
     <div className={styles.page}>
+      <button onClick={toggleMenu} className={styles.menuButton}>
+        <Image
+          src={isMenuVisible ? "/close.svg" : "/open.svg"}
+          alt={isMenuVisible ? "Close menu" : "Open menu"}
+          width={24}
+          height={24}
+        />
+      </button>
       <div className={styles.questionContainer}>{renderGameContent()}</div>
-      <div className={styles.moneyWrapper}>
+      <div
+        className={`${styles.moneyWrapper} ${
+          isMenuVisible ? styles.visible : ""
+        }`}
+      >
         <MoneyList
           winningSums={winningSums}
           currentQuestionId={currentQuestion?.id ?? 1}

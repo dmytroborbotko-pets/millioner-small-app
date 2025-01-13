@@ -191,43 +191,36 @@
   right: 1rem;
   width: 3rem;
   height: 3rem;
+  padding: 0.5rem;
   border-radius: 50%;
   background-color: var(--color-white);
+  border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 20;
   cursor: pointer;
   transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuButton:hover {
   background-color: var(--color-gray-light);
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .menuButton:hover {
-    background-color: var(--color-white);
-  }
-  .menuButton:focus,
-  .menuButton:active,
-  .menuButton:focus-visible {
-    outline: none !important;
-    -webkit-tap-highlight-color: transparent;
-  }
+.menuButton img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
 }
 
-.menuIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--color-dark);
-}
-
-@media (max-width: 1024px) {
-  .questionContainer {
-    padding: 4rem 3rem;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -241,27 +234,29 @@
 
   .menuButton {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
-  .moneyContainer {
+  .moneyWrapper {
     position: fixed;
-    right: 0;
+    right: -100%;
     top: 0;
-    width: 80%;
-    max-width: 20rem;
+    width: 100%;
+    max-width: none;
     height: 100svh;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: right 0.3s ease;
     z-index: 15;
     background-color: var(--color-white);
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
-    padding-top: 5rem;
   }
 
   .moneyContainer.visible {
     transform: translateX(0);
+  }
+
+  .moneyAmount {
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
   }
 
   .questionContainer {
@@ -299,11 +294,7 @@
     background-color: var(--color-gray-light);
     margin-bottom: 1.5rem;
   }
-}
-
-@media (max-width: 480px) {
-  .moneyContainer {
-    width: 100%;
-    max-width: none;
+  .moneyWrapper.visible {
+    right: 0;
   }
 }
