@@ -39,7 +39,7 @@ export const useQuestions = () => {
   }, []);
 
   const submitAnswer = useCallback(
-    async (answer: string) => {
+    async (answers: string[]) => {
       if (!currentQuestion) return;
 
       try {
@@ -49,7 +49,7 @@ export const useQuestions = () => {
           query: SUBMIT_ANSWER,
           variables: {
             questionId: currentQuestion.id,
-            answer,
+            answers,
           },
         });
 
@@ -69,7 +69,7 @@ export const useQuestions = () => {
                 `/result?wonSum=${
                   currentQuestion.id === 1
                     ? 0
-                    : winningSums[currentQuestion.id - 1].amount
+                    : winningSums[currentQuestion.id - 2].amount
                 }`
               );
             }

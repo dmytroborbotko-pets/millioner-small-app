@@ -9,7 +9,7 @@ export const GET_QUESTION = `
         C
         D
       }
-      correctAnswer
+      correctAnswers
       winningSum
     }
   }
@@ -25,9 +25,9 @@ export const GET_WINNING_SUMS = `
 `;
 
 export const SUBMIT_ANSWER = `
-  mutation SubmitAnswer($questionId: Int!, $answer: String!) {
-    submitAnswer(questionId: $questionId, answer: $answer) {
+  mutation SubmitAnswer($questionId: Int!, $answers: [String!]!) {
+    submitAnswer(questionId: $questionId, answers: $answers) {
       correct
     }
   }
-`; 
+`;

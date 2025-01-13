@@ -2,146 +2,146 @@
   "questions": [
     {
       "id": 1,
-      "question": "What is the capital of Japan?",
+      "question": "Which of these are programming languages?",
       "options": {
-        "A": "Beijing",
-        "B": "Seoul",
-        "C": "Tokyo",
-        "D": "Bangkok"
+        "A": "Python",
+        "B": "JavaScript",
+        "C": "Banana",
+        "D": "Java"
       },
-      "correctAnswer": "C",
+      "correctAnswers": ["A", "B", "D"],
       "winningSum": 500
     },
     {
       "id": 2,
-      "question": "Which programming language was created by Brendan Eich?",
+      "question": "Which of these is the most popular web browser?",
       "options": {
-        "A": "Python",
-        "B": "JavaScript",
-        "C": "Java",
-        "D": "Ruby"
+        "A": "Chrome",
+        "B": "Firefox",
+        "C": "Notepad",
+        "D": "Safari"
       },
-      "correctAnswer": "B",
+      "correctAnswers": ["A"],
       "winningSum": 1000
     },
     {
       "id": 3,
-      "question": "What is the largest planet in our solar system?",
+      "question": "Which planets in our solar system have rings?",
       "options": {
         "A": "Saturn",
         "B": "Mars",
         "C": "Jupiter",
-        "D": "Neptune"
+        "D": "Uranus"
       },
-      "correctAnswer": "C",
+      "correctAnswers": ["A", "C", "D"],
       "winningSum": 2000
     },
     {
       "id": 4,
-      "question": "Who painted the Mona Lisa?",
+      "question": "Which is the most popular code editor?",
       "options": {
-        "A": "Leonardo da Vinci",
-        "B": "Michelangelo",
-        "C": "Raphael",
-        "D": "Vincent van Gogh"
+        "A": "VSCode",
+        "B": "Calculator",
+        "C": "Sublime Text",
+        "D": "Notepad++"
       },
-      "correctAnswer": "A",
+      "correctAnswers": ["A"],
       "winningSum": 4000
     },
     {
       "id": 5,
-      "question": "What is the chemical symbol for gold?",
+      "question": "Which of these are JavaScript frameworks/libraries?",
       "options": {
-        "A": "Ag",
-        "B": "Fe",
-        "C": "Cu",
-        "D": "Au"
+        "A": "React",
+        "B": "Angular",
+        "C": "Python",
+        "D": "Vue"
       },
-      "correctAnswer": "D",
+      "correctAnswers": ["A", "B", "D"],
       "winningSum": 8000
     },
     {
       "id": 6,
-      "question": "Which company developed React.js?",
+      "question": "Which is the leading cloud service provider?",
       "options": {
-        "A": "Google",
-        "B": "Facebook",
-        "C": "Microsoft",
-        "D": "Amazon"
+        "A": "AWS",
+        "B": "Azure",
+        "C": "Notepad",
+        "D": "GCP"
       },
-      "correctAnswer": "B",
+      "correctAnswers": ["A"],
       "winningSum": 16000
     },
     {
       "id": 7,
-      "question": "What year was the first iPhone released?",
+      "question": "Which of these are NoSQL databases?",
       "options": {
-        "A": "2005",
-        "B": "2006",
-        "C": "2007",
-        "D": "2008"
+        "A": "MySQL",
+        "B": "MongoDB",
+        "C": "PostgreSQL",
+        "D": "Redis"
       },
-      "correctAnswer": "C",
+      "correctAnswers": ["B", "D"],
       "winningSum": 32000
     },
     {
       "id": 8,
-      "question": "Which HTML element is used to define important text?",
+      "question": "Which HTML tags are used for text emphasis?",
       "options": {
         "A": "<strong>",
         "B": "<b>",
-        "C": "<important>",
+        "C": "<div>",
         "D": "<em>"
       },
-      "correctAnswer": "A",
+      "correctAnswers": ["A", "D"],
       "winningSum": 64000
     },
     {
       "id": 9,
-      "question": "What does CSS stand for?",
+      "question": "Which is the most popular CSS preprocessor?",
       "options": {
-        "A": "Computer Style Sheets",
-        "B": "Creative Style System",
-        "C": "Cascading Style Sheets",
-        "D": "Colorful Style Sheets"
+        "A": "Sass",
+        "B": "Less",
+        "C": "HTML",
+        "D": "Stylus"
       },
-      "correctAnswer": "C",
+      "correctAnswers": ["A"],
       "winningSum": 125000
     },
     {
       "id": 10,
-      "question": "Which protocol is used to send emails?",
+      "question": "Which protocols are used for secure communication?",
       "options": {
-        "A": "FTP",
-        "B": "SMTP",
-        "C": "HTTP",
-        "D": "SSH"
+        "A": "HTTPS",
+        "B": "SSH",
+        "C": "FTP",
+        "D": "SSL"
       },
-      "correctAnswer": "B",
+      "correctAnswers": ["A", "B", "D"],
       "winningSum": 250000
     },
     {
       "id": 11,
-      "question": "What is the primary purpose of TypeScript?",
+      "question": "Which is the main feature of TypeScript?",
       "options": {
-        "A": "Database Management",
-        "B": "Static Typing",
-        "C": "Server Management",
-        "D": "UI Design"
+        "A": "Static Typing",
+        "B": "Interfaces",
+        "C": "Python Decorators",
+        "D": "Generics"
       },
-      "correctAnswer": "B",
+      "correctAnswers": ["A"],
       "winningSum": 500000
     },
     {
       "id": 12,
-      "question": "Which hook is used for side effects in React?",
+      "question": "Which are the most commonly used React hooks?",
       "options": {
         "A": "useState",
-        "B": "useContext",
-        "C": "useEffect",
-        "D": "useReducer"
+        "B": "useEffect",
+        "C": "useDatabase",
+        "D": "useContext"
       },
-      "correctAnswer": "C",
+      "correctAnswers": ["A", "B"],
       "winningSum": 1000000
     }
   ]

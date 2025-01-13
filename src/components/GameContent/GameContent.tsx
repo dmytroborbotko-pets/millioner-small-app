@@ -2,13 +2,7 @@ import React from "react";
 import styles from "../../app/game/page.module.css";
 import Option from "../Option";
 import { Question } from "@/types";
-
-interface AnswerState {
-  selectedAnswer: string | null;
-  isCorrect: boolean;
-  showFeedback: boolean;
-  isPending: boolean;
-}
+import { AnswerState } from "@/app/game/page";
 
 interface GameContentProps {
   question: Question;
@@ -18,17 +12,20 @@ interface GameContentProps {
 
 const getOptionColors = (
   letter: string,
-  correctAnswer: string,
+  correctAnswers: string[],
   answerState: AnswerState
 ): { strokeColor?: string; backgroundColor?: string } => {
   if (answerState.showFeedback) {
-    if (letter === correctAnswer) {
+    if (correctAnswers.includes(letter)) {
       return {
         strokeColor: "var(--color-success)",
         backgroundColor: "var(--color-success-bg)",
       };
     }
-    if (letter === answerState.selectedAnswer && !answerState.isCorrect) {
+    if (
+      answerState.selectedAnswers.includes(letter) &&
+      !answerState.isCorrect
+    ) {
       return {
         strokeColor: "var(--color-error)",
         backgroundColor: "var(--color-error-bg)",
@@ -36,7 +33,14 @@ const getOptionColors = (
     }
   }
 
-  if (answerState.isPending && letter === answerState.selectedAnswer) {
+  if (answerState.isPending && answerState.selectedAnswers.includes(letter)) {
+    return {
+      strokeColor: "var(--color-orange)",
+      backgroundColor: "var(--color-orange-bg)",
+    };
+  }
+
+  if (answerState.selectedAnswers.includes(letter)) {
     return {
       strokeColor: "var(--color-orange)",
       backgroundColor: "var(--color-orange-bg)",
@@ -59,19 +63,33 @@ const OptionContent: React.FC<{ letter: string; text: string }> = ({
 const GameContent = React.forwardRef<HTMLDivElement, GameContentProps>(
   ({ question, onAnswer, answerState }, ref) => {
     const handleOptionClick = (letter: string) => {
-      if (!answerState.showFeedback && !answerState.isPending) {
+      if (!answerState.showFeedback) {
         onAnswer(letter);
       }
     };
 
+    const getAnswerInstructions = () => {
+      const totalAnswers = question.correctAnswers.length;
+      const selectedCount = answerState.selectedAnswers.length;
+
+      if (totalAnswers === 1) {
+        return "Select the correct answer";
+      }
+
+      return `Select ${totalAnswers} correct answers (${selectedCount}/${totalAnswers} selected)`;
+    };
+
     return (
       <div ref={ref} className={styles.questionContent}>
-        <h1 className={styles.questionTitle}>{question.question}</h1>
+        <div className={styles.questionHeader}>
+          <h1 className={styles.questionTitle}>{question.question}</h1>
+          <p className={styles.answerInstructions}>{getAnswerInstructions()}</p>
+        </div>
         <div className={styles.optionsGrid}>
           {Object.entries(question.options).map(([letter, text]) => {
             const { strokeColor, backgroundColor } = getOptionColors(
               letter,
-              question.correctAnswer,
+              question.correctAnswers,
               answerState
             );
 

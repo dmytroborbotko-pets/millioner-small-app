@@ -9,7 +9,7 @@ interface QueryOptions<V> {
 interface QueryVariables {
   id?: number;
   questionId?: number;
-  answer?: string;
+  answers?: string[];
 }
 
 interface QueryResult<T> {
@@ -55,11 +55,11 @@ class MockGraphQLClient {
     if (
       query.includes("submitAnswer") &&
       variables?.questionId !== undefined &&
-      variables?.answer
+      variables?.answers
     ) {
       const result = await resolvers.Mutation.submitAnswer(null, {
         questionId: variables.questionId,
-        answer: variables.answer,
+        answers: variables.answers,
       });
       return { data: { submitAnswer: result } as T };
     }

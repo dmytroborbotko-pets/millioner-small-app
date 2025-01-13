@@ -10,14 +10,14 @@ import { useInitialDataEffect } from "./hooks/useInitialDataEffect";
 import { useQuestionTransitionEffect } from "./hooks/useQuestionTransitionEffect";
 
 export interface AnswerState {
-  selectedAnswer: string | null;
+  selectedAnswers: string[];
   isCorrect: boolean;
   showFeedback: boolean;
   isPending: boolean;
 }
 
 export const INITIAL_ANSWER_STATE: AnswerState = {
-  selectedAnswer: null,
+  selectedAnswers: [],
   isCorrect: false,
   showFeedback: false,
   isPending: false,
@@ -66,27 +66,70 @@ const GamePage = () => {
   const handleAnswer = async (selectedAnswer: string) => {
     if (!displayedQuestion) return;
 
-    setAnswerState({
-      selectedAnswer,
-      isCorrect: false,
-      showFeedback: false,
-      isPending: true,
+    // Toggle answer selection
+    setAnswerState((prev) => {
+      const newSelectedAnswers = prev.selectedAnswers.includes(selectedAnswer)
+        ? prev.selectedAnswers.filter((answer) => answer !== selectedAnswer)
+        : [...prev.selectedAnswers, selectedAnswer];
+
+      // For single-answer questions, we submit immediately
+      const isSingleAnswerQuestion =
+        displayedQuestion.correctAnswers.length === 1;
+      const isPending = isSingleAnswerQuestion
+        ? newSelectedAnswers.length === 1
+        : newSelectedAnswers.length === displayedQuestion.correctAnswers.length;
+
+      return {
+        ...prev,
+        selectedAnswers: isSingleAnswerQuestion
+          ? [selectedAnswer] // For single-answer questions, replace the selection
+          : newSelectedAnswers, // For multiple-answer questions, toggle selection
+        isPending,
+      };
     });
 
-    await delay(ANSWER_FEEDBACK_DELAY);
+    // For single-answer questions, submit immediately
+    if (displayedQuestion.correctAnswers.length === 1) {
+      await delay(ANSWER_FEEDBACK_DELAY);
 
-    const response = await submitAnswer(selectedAnswer);
-    if (!response) return;
+      const response = await submitAnswer([selectedAnswer]);
+      if (!response) return;
 
-    setAnswerState((prev) => ({
-      ...prev,
-      isCorrect: response.data.submitAnswer.correct,
-      showFeedback: true,
-      isPending: false,
-    }));
+      setAnswerState((prev) => ({
+        ...prev,
+        isCorrect: response.data.submitAnswer.correct,
+        showFeedback: true,
+        isPending: false,
+      }));
 
-    await delay(ANSWER_FEEDBACK_DELAY);
-    await response.nextAction();
+      await delay(ANSWER_FEEDBACK_DELAY);
+      await response.nextAction();
+      return;
+    }
+
+    // For multiple-answer questions, check if we have the required number of answers
+    const updatedAnswers = answerState.selectedAnswers.includes(selectedAnswer)
+      ? answerState.selectedAnswers.filter(
+          (answer) => answer !== selectedAnswer
+        )
+      : [...answerState.selectedAnswers, selectedAnswer];
+
+    if (updatedAnswers.length === displayedQuestion.correctAnswers.length) {
+      await delay(ANSWER_FEEDBACK_DELAY);
+
+      const response = await submitAnswer(updatedAnswers);
+      if (!response) return;
+
+      setAnswerState((prev) => ({
+        ...prev,
+        isCorrect: response.data.submitAnswer.correct,
+        showFeedback: true,
+        isPending: false,
+      }));
+
+      await delay(ANSWER_FEEDBACK_DELAY);
+      await response.nextAction();
+    }
   };
 
   const getOptionsCount = () =>

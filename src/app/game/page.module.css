@@ -30,11 +30,23 @@
   animation: slideIn 0.3s ease-out;
 }
 
+.questionHeader {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+}
+
 .questionTitle {
   font-size: var(--font-size-xl);
   font-weight: 600;
   color: var(--color-dark);
   width: 100%;
+}
+
+.answerInstructions {
+  font-size: var(--font-size-md);
+  color: var(--color-gray);
 }
 
 .moneyContainer {
@@ -267,9 +279,15 @@
     width: 100%;
   }
 
+  .questionHeader {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
   .questionTitle {
     text-align: center;
-    margin: auto 0;
     padding: 0 var(--container-padding);
   }
 

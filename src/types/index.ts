@@ -7,7 +7,7 @@ export interface Question {
     C: string;
     D: string;
   };
-  correctAnswer: string;
+  correctAnswers: string[];
   winningSum: number;
 }
 
@@ -18,4 +18,9 @@ export interface QuestionsData {
 export interface WinningSum {
   level: number;
   amount: number;
+}
+
+export interface SelectedAnswers {
+  answers: string[];
+  isComplete: boolean;
 }

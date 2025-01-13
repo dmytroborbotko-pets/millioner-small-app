@@ -1,5 +1,5 @@
-import { Question, WinningSum } from '@/types';
-import questionsData from '@/data/questions.json';
+import { Question, WinningSum } from "@/types";
+import questionsData from "@/data/questions.json";
 
 export const typeDefs = `
   type Query {
@@ -8,14 +8,14 @@ export const typeDefs = `
   }
 
   type Mutation {
-    submitAnswer(questionId: Int!, answer: String!): AnswerResult!
+    submitAnswer(questionId: Int!, answers: [String!]!): AnswerResult!
   }
 
   type Question {
     id: Int!
     question: String!
     options: Options!
-    correctAnswer: String!
+    correctAnswers: [String!]!
     winningSum: Int!
   }
 
@@ -41,7 +41,7 @@ export const resolvers = {
     question: (_: unknown, { id }: { id: number }): Promise<Question> => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const question = questionsData.questions.find(q => q.id === id);
+          const question = questionsData.questions.find((q) => q.id === id);
           if (question) {
             resolve(question);
           } else {
@@ -53,9 +53,9 @@ export const resolvers = {
     winningSums: (): Promise<WinningSum[]> => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const sums = questionsData.questions.map(q => ({
+          const sums = questionsData.questions.map((q) => ({
             level: q.id,
-            amount: q.winningSum
+            amount: q.winningSum,
           }));
           resolve(sums);
         }, 100);
@@ -63,15 +63,31 @@ export const resolvers = {
     },
   },
   Mutation: {
-    submitAnswer: (_: unknown, { questionId, answer }: { questionId: number, answer: string }): Promise<{ correct: boolean }> => {
+    submitAnswer: (
+      _: unknown,
+      { questionId, answers }: { questionId: number; answers: string[] }
+    ): Promise<{ correct: boolean }> => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const question = questionsData.questions.find(q => q.id === questionId);
-          resolve({
-            correct: question ? question.correctAnswer === answer : false
-          });
+          const question = questionsData.questions.find(
+            (q) => q.id === questionId
+          );
+          if (!question) {
+            resolve({ correct: false });
+            return;
+          }
+
+          // Check if arrays have the same length and contain the same elements
+          const isCorrect =
+            answers.length === question.correctAnswers.length &&
+            answers.every((answer) =>
+              question.correctAnswers.includes(answer)
+            ) &&
+            question.correctAnswers.every((answer) => answers.includes(answer));
+
+          resolve({ correct: isCorrect });
         }, 100);
       });
     },
   },
-}; 
+};
